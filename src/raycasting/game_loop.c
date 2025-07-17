@@ -1,7 +1,7 @@
 
 #include "cub3d.h"
 
-void	cast_rays(t_main *main)
+void	render_game(t_main *main)
 {
 	int				x;
 	t_dda_struct	dda_struct;
@@ -16,6 +16,7 @@ void	cast_rays(t_main *main)
 		main->ray.dirY = main->player.dir_y
 			+ main->player.plane_y * main->player.camera_x;
 		digital_differential_analyzer(main, &dda_struct);
+		//draw_floor;
 		texture_direction = get_direction_for_texture(main, &dda_struct);
 		draw_wall(main, &dda_struct, x, texture_direction);
 		x++;

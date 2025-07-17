@@ -45,11 +45,8 @@ void	exit_cub3d(t_main *main, char *error_message)
 	if (error_message)
 	{
 		print_error_and_message(error_message);
-		exit(1);
-	}
-	else if (errno)
-	{
-		perror("Cub3d: ");
+		if (errno)
+			perror("Cub3d: ");
 		exit(1);
 	}
 	exit(0);

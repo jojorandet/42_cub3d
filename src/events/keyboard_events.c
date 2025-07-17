@@ -21,9 +21,9 @@ static int	key_pressed(int keycode, t_main *main)
 		main->keys.right = 1;
 	if (keycode == K_ESCP)
 		exit_cub3d(main, 0);
-	if (main->debug.last_keycode != keycode) //debug
-		printf("keycode : %d\n", keycode); //debug
-	main->debug.last_keycode = keycode; //debug
+	if (main->debug.last_keycode != keycode)
+		printf("keycode : %d\n", keycode);
+	main->debug.last_keycode = keycode;
 	return (1);
 }
 

@@ -80,7 +80,7 @@ void		player_movement(t_main *main);
 void		put_pixel_to_image(t_main *main, int x, int y, int colour);
 
 //GAMELOOP//
-void		cast_rays(t_main *main);
+void		render_game(t_main *main);
 
 void		draw_wall(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture);
 t_texture	get_direction_for_texture(t_main *main, t_dda_struct *dda_struct);
