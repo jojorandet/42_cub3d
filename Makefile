@@ -73,7 +73,8 @@ EVENTS			=			$(addprefix $(DIR_EVENTS)/, $(SRC_EVENTS))
 DIR_RENDER_IMG	=			./src/render_img
 SRC_RENDER_IMG	=			init_img.c \
 							render.c \
-							player_movement.c
+							player_movement.c \
+							valid_next_movement.c
 RENDER_IMG		=			$(addprefix $(DIR_RENDER_IMG)/, $(SRC_RENDER_IMG))
 
 DIR_MINIMAP		=			./src/minimap
@@ -102,7 +103,7 @@ vpath %.c		 			$(DIR_MAIN) $(DIR_PARSING) $(DIR_UTILS) $(DIR_DEBUG) $(DIR_EVENTS
 OBJECTS			:= 			$(addprefix $(DIR_BUILD)/, $(notdir $(SOURCES:.c=.o)))
 DEPS			:=			$(OBJECTS:.o=.d)
 
-CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP
+CFLAGS			=			-Wall -Werror -Wextra $(INC_FLAGS) -g -MMD -MP -O3
 INC_FLAGS		:=			-I $(DIR_INCLUDE) -I $(LIBFT_PATH) -I $(MLX_PATH)
 LIBRARY_PATHS	:=			-L$(LIBFT_PATH) -L$(MLX_PATH)
 

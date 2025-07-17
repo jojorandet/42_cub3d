@@ -13,6 +13,8 @@ static void	player_rotation(t_main *main)
 			rotation_speed = -ROTATION_SPEED;
 		if (main->keys.right)
 			rotation_speed = ROTATION_SPEED;
+		if (main->keys.left && main->keys.right)
+			return;
 		old_dir_x = main->player.dir_x;
 		main->player.dir_x = main->player.dir_x * cos(rotation_speed)
 			- main->player.dir_y * sin(rotation_speed);
@@ -27,15 +29,6 @@ static void	player_rotation(t_main *main)
 	}
 }
 
-static void	valid_next_movement(t_main *main, double x, double y)
-{
-	if (main->map_struct.map[(int)trunc(y)][(int)trunc(x)] == '0')
-	{
-		main->player.x = x;
-		main->player.y = y;
-	}
-}
-
 static void	player_right_and_left(t_main *main)
 {
 	double	new_x;
@@ -45,13 +38,13 @@ static void	player_right_and_left(t_main *main)
 	{
 		new_x = main->player.x + (main->player.plane_x * PLAYER_SPEED);
 		new_y = main->player.y + (main->player.plane_y * PLAYER_SPEED);
-		valid_next_movement(main, new_x, new_y);
+		valid_next_movement_right(main, new_x, new_y);
 	}
 	if (main->keys.a == 1)
 	{
 		new_x = main->player.x - (main->player.plane_x * PLAYER_SPEED);
 		new_y = main->player.y - (main->player.plane_y * PLAYER_SPEED);
-		valid_next_movement(main, new_x, new_y);
+		valid_next_movement_left(main, new_x, new_y);
 	}
 }
 
@@ -64,13 +57,13 @@ static void	player_up_and_down(t_main *main)
 	{
 		new_x = main->player.x + (main->player.dir_x * PLAYER_SPEED);
 		new_y = main->player.y + (main->player.dir_y * PLAYER_SPEED);
-		valid_next_movement(main, new_x, new_y);
+		valid_next_movement_up(main, new_x, new_y);
 	}
 	if (main->keys.s == 1)
 	{
 		new_x = main->player.x - (main->player.dir_x * PLAYER_SPEED);
 		new_y = main->player.y - (main->player.dir_y * PLAYER_SPEED);
-		valid_next_movement(main, new_x, new_y);
+		valid_next_movement_down(main, new_x, new_y);
 	}
 }
 
