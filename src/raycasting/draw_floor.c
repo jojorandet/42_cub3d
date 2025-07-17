@@ -7,46 +7,53 @@ typedef struct	s_guide
 	double	top_most_ray_y;
 	double	bottom_most_ray_y;
 	double	half_screen;
-	double	distance_to_floor;
+	double	distance_to_row;
 	double	floor_stepX;
 	double	floor_stepY;
 	double	floor_x;
 	double	floor_y;
+	int		cellX;
+	int		cellY;
+	int		current_row;
 }				t_guide;
 
-static void	get_proportion_ratios(t_guide *guide, double dist_to_row)
-{
-	guide->floor_stepX = dist_to_row * (guide->right_most_ray_x - guide->left_most_ray_x) / WIN_HEIGHT;
-	guide->floor_stepY = dist_to_row * (guide->bottom_most_ray_y - guide->top_most_ray_y) / WIN_HEIGHT;
-}
 
-static void	intialise_constants(t_main *main, t_guide *guide)
+static void	get_guide_info(t_main *main, t_guide *g, int y)
 {
 	t_player	*player;
 
 	player = &main->player;
-	guide->left_most_ray_x = player->x - player->plane_x;
-	guide->right_most_ray_x = player->x + player->plane_x;
-	guide->bottom_most_ray_y = player->y + player->plane_y;
-	guide->top_most_ray_y = player->y - player->plane_y;
-	guide->half_screen = (double)WIN_HEIGHT * 0.5;
+	g->current_row = y - g->half_screen;
+	g->distance_to_row = g->half_screen / g->current_row;
+	g->left_most_ray_x = player->dir_x - player->plane_x;
+	g->right_most_ray_x = player->dir_x + player->plane_x;
+	g->bottom_most_ray_y = player->dir_y + player->plane_y;
+	g->top_most_ray_y = player->dir_y - player->plane_y;
+	g->half_screen = (double)WIN_HEIGHT * 0.5;
+	g->floor_stepX = g->distance_to_row * (g->right_most_ray_x - g->left_most_ray_x) / WIN_HEIGHT;
+	g->floor_stepY = g->distance_to_row * (g->bottom_most_ray_y - g->top_most_ray_y) / WIN_HEIGHT;
+	g->floor_x = player->x + g->distance_to_row * g->left_most_ray_x;
+	g->floor_y = player->y + g->distance_to_row * g->top_most_ray_y;
 }
 
 void	draw_floor(t_main *main)
 {
 	int			y;
-	int			current_row;
-	double		distance_to_row;
+	int			x;
 	t_guide		guide;
+	t_texture	text_pos_x;
 
 	y = 0;
 	intialise_constants(main, &guide);
 	while (y < WIN_HEIGHT)
 	{
-		current_row = y - guide.half_screen;
-		distance_to_row = current_row / guide.half_screen;
-		get_proportion_ratios(&guide, distance_to_row);
-
+		get_guide_info(main, &guide, y);
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			text_pos_x = (int)texture.
+			x++;
+		}
 		y++;
 	}
 }
