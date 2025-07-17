@@ -21,7 +21,7 @@ static void	get_texture_position(t_main *main, t_texture texture, int wall_heigh
 	}
 }
 
-static	int	get_hit_position(t_main *main, t_dda_struct *dda_struct, t_texture texture)
+static	int	get_texture_column(t_main *main, t_dda_struct *dda_struct, t_texture texture)
 {
 	double	width_pourcentage;
 	double	width_pos_x;
@@ -40,14 +40,14 @@ static	int	get_hit_position(t_main *main, t_dda_struct *dda_struct, t_texture te
 	return (texture_coor_x);
 }
 
-void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture)
+void	draw_wall(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture)
 {
 	int			texture_coor_x;
 	int			wall_height;
 	int			draw_start;
 	int			draw_end;
 
-	texture_coor_x = get_hit_position(main, dda_struct, texture);
+	texture_coor_x = get_texture_column(main, dda_struct, texture);
 	wall_height = (int)(WIN_HEIGHT / dda_struct->perpwalldist);
 	draw_start =  (WIN_HEIGHT / 2) - (wall_height / 2);
 	if (draw_start < 0)
@@ -58,7 +58,7 @@ void	draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture textu
 	get_texture_position(main, texture, wall_height, draw_start, draw_end, texture_coor_x, x);
 }
 
-t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct)
+t_texture	get_direction_for_texture(t_main *main, t_dda_struct *dda_struct)
 {
 	t_texture	texture;
 

@@ -82,8 +82,8 @@ void		put_pixel_to_image(t_main *main, int x, int y, int colour);
 //GAMELOOP//
 void		cast_rays(t_main *main);
 
-void		draw_texture(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture);
-t_texture	get_cardinal_texture(t_main *main, t_dda_struct *dda_struct);
+void		draw_wall(t_main *main, t_dda_struct *dda_struct, int x, t_texture texture);
+t_texture	get_direction_for_texture(t_main *main, t_dda_struct *dda_struct);
 
 size_t		count_map_height(char **map);
 
