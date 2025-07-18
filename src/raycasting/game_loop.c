@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/18 10:40:33 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/18 10:40:54 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -6,7 +17,7 @@ void	cast_rays(t_main *main)
 	int				x;
 	t_dda_struct	dda_struct;
 	t_texture		cardinal_texture;
-	
+
 	x = 0;
 	while (x < WIN_WIDTH)
 	{

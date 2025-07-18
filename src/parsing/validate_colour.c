@@ -1,15 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_colour.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/18 10:44:01 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/18 10:44:17 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
 static bool	is_in_char_range(char *s)
 {
 	if (ft_atoi(s) > 255)
-		return(false);
-	// if (ft_strlen(s) == 3)
-	// {
-	// 	if (s[0] > '2' || s[1] > '5' || s[2] > '5')  //dosen't work with 156
-	// 		return (false);
-	// }
+		return (false);
 	return (true);
 }
 

@@ -1,19 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid_next_movement.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/18 10:35:19 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/18 10:38:41 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
 static bool	check_corner(t_main *main, double next_x, double next_y)
 {
-	if (main->map_struct.map[(int)trunc(next_y - 0.1)][(int)trunc(next_x)] == '1'
-			&& main->map_struct.map[(int)trunc(next_y)][(int)trunc(next_x + 0.1)] == '1')
+	if (main->map_struct.map[(int)trunc(next_y - 0.1)]
+		[(int)trunc(next_x)] == '1'
+		&& main->map_struct.map[(int)trunc(next_y)]
+		[(int)trunc(next_x + 0.1)] == '1')
 		return (false);
-	if (main->map_struct.map[(int)trunc(next_y + 0.1)][(int)trunc(next_x)] == '1'
-			&& main->map_struct.map[(int)trunc(next_y)][(int)trunc(next_x - 0.1)] == '1')
+	if (main->map_struct.map[(int)trunc(next_y + 0.1)]
+		[(int)trunc(next_x)] == '1'
+		&& main->map_struct.map[(int)trunc(next_y)]
+		[(int)trunc(next_x - 0.1)] == '1')
 		return (false);
-	if (main->map_struct.map[(int)trunc(next_y + 0.1)][(int)trunc(next_x)] == '1'
-			&& main->map_struct.map[(int)trunc(next_y)][(int)trunc(next_x + 0.1)] == '1')
+	if (main->map_struct.map[(int)trunc(next_y + 0.1)]
+		[(int)trunc(next_x)] == '1'
+		&& main->map_struct.map[(int)trunc(next_y)]
+		[(int)trunc(next_x + 0.1)] == '1')
 		return (false);
-	if (main->map_struct.map[(int)trunc(next_y - 0.1)][(int)trunc(next_x)] == '1'
-			&& main->map_struct.map[(int)trunc(next_y)][(int)trunc(next_x - 0.1)] == '1')
+	if (main->map_struct.map[(int)trunc(next_y - 0.1)]
+		[(int)trunc(next_x)] == '1'
+		&& main->map_struct.map[(int)trunc(next_y)]
+		[(int)trunc(next_x - 0.1)] == '1')
 		return (false);
 	return (true);
 }

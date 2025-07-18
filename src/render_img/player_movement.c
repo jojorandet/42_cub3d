@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   player_movement.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/18 10:35:38 by hdougoud          #+#    #+#             */
+/*   Updated: 2025/07/18 10:39:11 by hdougoud         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "cub3d.h"
 
@@ -14,7 +25,7 @@ static void	player_rotation(t_main *main)
 		if (main->keys.right)
 			rotation_speed = ROTATION_SPEED;
 		if (main->keys.left && main->keys.right)
-			return;
+			return ;
 		old_dir_x = main->player.dir_x;
 		main->player.dir_x = main->player.dir_x * cos(rotation_speed)
 			- main->player.dir_y * sin(rotation_speed);
