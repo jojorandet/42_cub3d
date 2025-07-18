@@ -35,7 +35,7 @@ static bool	fill_parse_buffer(char ***file_content, int fd)
 		if (line == NULL)
 			break ;
 		null_terminate_line(&line);
-		if (!is_only_spaces(line))
+		if (!is_only_spaces(line) || (i > 5 && is_only_spaces(line)))
 		{
 			(*file_content)[i] = ft_strdup(line);
 			if (!(*file_content)[i])
@@ -65,7 +65,9 @@ static void	count_lines(char *file, int *line_counter)
 		{
 			break ;
 		}
-		if (!is_only_spaces(line))
+		if (*line_counter > 5 && is_only_spaces(line))
+			(*line_counter)++;
+		else if (!is_only_spaces(line))
 			(*line_counter)++;
 		free(line);
 	}
